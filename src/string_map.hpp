@@ -74,12 +74,15 @@ int string_map<T>::count(const string& clave) const{
 
 template <typename T>
 const T& string_map<T>::at(const string& clave) const {
-    // COMPLETAR
+    Nodo* nodo = raiz;
+    for (int i = 0; i < clave.size(); ++i)
+        nodo = nodo->siguientes[clave[i]];
+    return nodo->definicion;
 }
 
 template <typename T>
 T& string_map<T>::at(const string& clave) {
-    // COMPLETAR
+    return at(clave);
 }
 
 template <typename T>
