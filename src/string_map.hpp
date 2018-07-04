@@ -36,9 +36,9 @@ template <typename T>
 int string_map<T>::count(const string& clave) const{
     Nodo* nodo = raiz;
     for (int i = 0; i < clave.size(); ++i) {
-        if(nodo == nullptr)
+        if(!nodo->siguientes[clave[i]])
             return 0;
-        nodo->siguientes[clave[i]];
+        nodo = nodo->siguientes[clave[i]];
     }
     return nodo->definicion != nullptr ? 1 : 0;
 }
