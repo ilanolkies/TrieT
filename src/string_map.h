@@ -78,6 +78,11 @@ private:
     struct Nodo {
         Nodo** siguientes;
         T* definicion;
+
+        Nodo(){
+            siguientes = new Nodo*[256];
+            definicion = nullptr;
+        }
     };
 
     Nodo* raiz;
