@@ -9,12 +9,41 @@ string_map<T>::string_map(const string_map<T>& aCopiar) : string_map() { *this =
 
 template <typename T>
 string_map<T>& string_map<T>::operator=(const string_map<T>& d) {
-    // COMPLETAR
+    limpiar(raiz);
+    raiz = copiar(d.raiz);
+    _size = d.size();
+    return *this;
+}
+
+template <typename T>
+typename string_map<T>::Nodo* string_map<T>::copiar(string_map<T>::Nodo *valor) {
+    if(!valor)
+        return NULL;
+
+    Nodo *nodo = new Nodo();
+    if(valor->definicion)
+         nodo->definicion = new T(*valor->definicion);
+
+    for (int i = 0; i < 256; ++i)
+        nodo->siguientes[i] = copiar(valor->siguientes[i]);
+
+    return nodo;
+}
+
+template <typename T>
+void string_map<T>::limpiar(string_map<T>::Nodo *nodo) {
+    if(!nodo) return;
+    for (int i = 0; i < 256; ++i) {
+        limpiar(nodo->siguientes[i]);
+    }
+    delete nodo->definicion;
+    delete nodo->siguientes;
+    delete nodo;
 }
 
 template <typename T>
 string_map<T>::~string_map(){
-    // COMPLETAR
+    limpiar(raiz);
 }
 
 template <typename T>

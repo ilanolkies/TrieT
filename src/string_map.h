@@ -87,6 +87,9 @@ private:
 
     Nodo* raiz;
     int _size;
+
+    Nodo* copiar(Nodo* valor);
+    void limpiar(Nodo* nodo);
 };
 
 #include "string_map.hpp"
