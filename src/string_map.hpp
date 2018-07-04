@@ -84,7 +84,14 @@ T& string_map<T>::at(const string& clave) {
 
 template <typename T>
 void string_map<T>::erase(const string& clave) {
-    // COMPLETAR
+    Nodo* nodo = raiz;
+    for (int i = 0; i < clave.size(); ++i) {
+        if(!nodo->siguientes[clave[i]])
+            return;
+        nodo = nodo->siguientes[clave[i]];
+    }
+    delete nodo->definicion;
+    nodo->definicion = nullptr;
 }
 
 template <typename T>
