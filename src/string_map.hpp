@@ -1,6 +1,6 @@
 template <typename T>
 string_map<T>::string_map(){
-    // COMPLETAR
+    _size = 0;
 }
 
 template <typename T>
@@ -24,7 +24,7 @@ T& string_map<T>::operator[](const string& clave){
 
 template <typename T>
 int string_map<T>::count(const string& clave) const{
-    // COMPLETAR
+    return 0;
 }
 
 template <typename T>
@@ -44,10 +44,10 @@ void string_map<T>::erase(const string& clave) {
 
 template <typename T>
 int string_map<T>::size() const{
-    // COMPLETAR
+    return _size;
 }
 
 template <typename T>
 bool string_map<T>::empty() const{
-    // COMPLETAR
+    return _size == 0;
 }
