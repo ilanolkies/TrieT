@@ -80,17 +80,17 @@ int string_map<T>::count(const string& clave) const{
 
 template <typename T>
 const T& string_map<T>::at(const string& clave) const {
+    return at(clave);
+}
+
+template <typename T>
+T& string_map<T>::at(const string& clave) {
     Nodo* nodo = raiz;
 
     for (int i = 0; i < clave.size(); ++i)
         nodo = nodo->siguientes[clave[i]];
 
     return nodo->definicion;
-}
-
-template <typename T>
-T& string_map<T>::at(const string& clave) {
-    return at(clave);
 }
 
 template <typename T>
@@ -111,5 +111,5 @@ int string_map<T>::size() const{
 
 template <typename T>
 bool string_map<T>::empty() const{
-    return raiz == nullptr;
+    return _size == 0;
 }
